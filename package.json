@@ -7,7 +7,8 @@
     "test": "jest",
     "start": "webpack-dev-server --open --hot --mode development",
     "build": "webpack --mode production",
-    "lint": "eslint"
+    "lint": "eslint",
+    "stylelint": "stylelint '**/*.scss'; exit 0"
   },
   "repository": {
     "type": "git",
@@ -21,22 +22,14 @@
   },
   "homepage": "https://github.com/andela/ah-frontend-dojo#readme",
   "dependencies": {
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.13.2"
-  },
-  "jest": {
-    "setupFiles": [
-      "./src/setupTests.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -53,8 +46,13 @@
     "eslint-plugin-react": "^7.13.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
+    "jest-css-modules-transform": "^2.2.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "stylelint": "^10.0.1",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1"

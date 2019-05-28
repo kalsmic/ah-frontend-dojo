@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
+import 'assets/MainStyle.scss';
+
 class App extends Component {
   render() {
     return (
       <div>
-        <h1>Authors&apos; Haven</h1>
+        <h1 className="text--green">Authors&apos; Haven</h1>
       </div>
     );
   }

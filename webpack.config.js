@@ -1,6 +1,12 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
+  resolve: {
+    alias: {
+      assets: path.resolve(__dirname, 'src/assets/'),
+    },
+  },
   module: {
     rules: [
       {
@@ -16,6 +22,14 @@ module.exports = {
           {
             loader: 'html-loader',
           },
+        ],
+      },
+      {
+        test: /\.(scss|css)$/,
+        use: [
+          'style-loader', // creates style nodes from JS strings
+          'css-loader', // translates CSS into CommonJS
+          'sass-loader', // compiles Sass to CSS, using Node Sass by default
         ],
       },
     ],
