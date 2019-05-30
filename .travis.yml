@@ -15,5 +15,6 @@ before_script:
 script:
   - npm install
   - npx jest -u --coverage
+  - commitlint-travis
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
