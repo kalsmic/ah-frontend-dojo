@@ -3,33 +3,54 @@ import React, { Component } from 'react';
 
 // third party libraries
 import { Link, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 // styles
 import './NavBarStyle.scss';
-// import { SignupUser } from '../../pages/SignupUser';
+
+
 import SignupUserPage from 'components/SignupUser';
 import { closeOpenModalFunction } from 'constants/staticsMethods';
 
-class Navbar extends Component {
+import Login from 'components/Login';
+import { logoutUser } from 'store/actions/loginActions';
+
+export class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      openmodal: false,
+      opensignupModal: false,
+      openloginModal: false,
     };
-    this.openModalHandler = this.openModalHandler.bind(this);
   }
 
-  openModalHandler = () => {
-    this.setState({ openmodal: true });
-    const openModalLink = document.getElementById('span-signup-link');
-    openModalLink.addEventListener('click', closeOpenModalFunction);
-  }
+  logout = (e) => {
+    e.preventDefault();
+    const { logout } = this.props;
+
+    logout();
+  };
+
+
+  openModalHandler = (e) => {
+    e.preventDefault();
+    this.setState({ [`${e.target.id}`]: true });
+
+    const openModalLink = document.getElementById(e.target.id);
+
+    openModalLink.addEventListener('click', () => { e.preventDefault(); closeOpenModalFunction(e.target.id.slice(4)); });
+  };
 
   render() {
-    const { openmodal } = this.state;
+    const { opensignupModal, openloginModal } = this.state;
+    const { user } = this.props;
+
+
     return (
       <div className="navbar">
         {
-          openmodal && (
+          opensignupModal && (
             <Route
               render={
                 props => (
@@ -41,6 +62,21 @@ class Navbar extends Component {
             />
           )
         }
+        {
+          openloginModal && (
+            <Route
+              render={
+                props => (
+                  <Login
+                    {...props}
+                  />
+                )
+              }
+            />
+          )
+        }
+
+
         <div className="navbar__branding">
           <div className="navbar__branding__name">
             <h1>
@@ -57,19 +93,75 @@ class Navbar extends Component {
           </div>
         </div>
         <div className="navbar__navigation">
-          <div className="navbar__navigation__auth">
+          <div className="navbar__navigation__auth" id="userInfo">
+
+            {user && (
+            <ul>
+
+              <li className="navbar__navigation__auth__button">
+                <span
+                  className="navbar__navigation__auth__button--link"
+                  style={{ cursor: 'pointer' }}
+                >
+                  { user.username.concat('|') }
+                </span>
+              </li>
+
+              <li className="navbar__navigation__auth__button">
+                <span
+                  className="navbar__navigation__auth__button--link"
+                  style={{ cursor: 'pointer' }}
+                  onClick={this.logout}
+                  role="button"
+                  tabIndex="0"
+                  onKeyPress={this.handleKeyPress}
+                >
+                  {' '}
+                      Logout
+                </span>
+              </li>
+
+            </ul>
+
+            )
+              }
+
+            {!user && (
+
             <ul>
               <li className="navbar__navigation__auth__button">
-                <Link className="navbar__navigation__auth__button--link" to="/login">
+                <span
+                  id="openloginModal"
+                  href="/"
+                  className="navbar__navigation__auth__button--link"
+                  style={{ cursor: 'pointer' }}
+                  onClick={this.openModalHandler}
+                  role="button"
+                  tabIndex="0"
+                  onKeyPress={this.handleKeyPress}
+                >
                   Login
-                </Link>
+                </span>
               </li>
+
+              {' '}
               <li className="navbar__navigation__auth__button">
-                <span id="span-signup-link" href="/" className="navbar__navigation__auth__button--link" style={{ cursor: 'pointer' }} onClick={this.openModalHandler} role="button" tabIndex="0" onKeyPress={this.handleKeyPress}>
-                  Sign Up
+                <span
+                  id="opensignupModal"
+                  href="/"
+                  className="navbar__navigation__auth__button--link"
+                  style={{ cursor: 'pointer' }}
+                  onClick={this.openModalHandler}
+                  role="button"
+                  tabIndex="0"
+                  onKeyPress={this.handleKeyPress}
+                >
+Sign Up
                 </span>
               </li>
             </ul>
+            )}
+
           </div>
           <div className="navbar__navigation__articles">
             <ul className="navbar__navigation__articles__ul">
@@ -91,4 +183,26 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+Navbar.defaultProps = {
+  user: {},
+};
+
+Navbar.propTypes = {
+  logout: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    username: PropTypes.string,
+    email: PropTypes.string,
+    token: PropTypes.string,
+  })
+};
+
+const mapStateToProps = (state) => {
+  const { user } = state.loginReducer;
+  return { user };
+};
+
+export const mapDispatchToProps = dispatch => ({
+  logout() { (dispatch(logoutUser())); }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

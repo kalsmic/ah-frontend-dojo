@@ -27,12 +27,12 @@ const SignupForm = (props) => {
   const {
     onChangeHandler, email, username, password,
     confirmPassword, onSubmitHandler, emailError, usernameError,
-    passwordError, confirmPasswordError, signupMessageState, isSigningUp,
+    passwordError, confirmPasswordError, signupMessageState, isSigningUp, backdropId,
   } = props;
 
   return (
     // Signup form enclosed inside the modal
-    <ModalBox show title={SIGN_UP_STRING} {...props}>
+    <ModalBox show title={SIGN_UP_STRING} {...props} backdropId={backdropId}>
       <div>
         <form className="signupForm" id="signupForm">
           <InputBox
@@ -116,6 +116,7 @@ SignupForm.propTypes = {
   confirmPasswordError: PropTypes.string,
   signupMessageState: PropTypes.string,
   isSigningUp: PropTypes.bool,
+  backdropId: PropTypes.string,
 };
 
 // default props
@@ -132,6 +133,7 @@ SignupForm.defaultProps = {
   confirmPasswordError: '',
   signupMessageState: '',
   isSigningUp: false,
+  backdropId: 'signupModal',
 };
 
 export default SignupForm;

@@ -20,6 +20,22 @@ const data = {
       },
     },
   },
+  login: {
+    success: {
+      user: {
+        username: 'arthur',
+        email: 'admin@email.com',
+        token: 'ghjkjbhvgcftuyjiu736e7giwsnbxusijs',
+      },
+    },
+    failure: {
+      errors: {
+        error: [
+          'A user with this email and password was not found.',
+        ],
+      },
+    },
+  },
 };
 
 export default data;

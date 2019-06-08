@@ -1,40 +1,57 @@
 // react libraries
 import React from 'react';
+import { shallow } from 'enzyme';
 
 // components
 import { shouldContainClass, shouldContainText } from 'utils';
-import NavBar from './index';
+import { Navbar } from './index';
 
-describe('Navbar Component', () => {
+describe('NavBar component', () => {
+  const props = {
+    opensignupModal: false,
+    openloginModal: false,
+    user: {
+      username: '',
+    },
+    logout: jest.fn(),
+  };
+  const navBar = shallow(<Navbar {...props} />);
+  const wrapper = <Navbar {...props} />;
+
+
+  it('should render without crushing', () => {
+    expect(navBar).toMatchSnapshot();
+  });
+
   it('Should contain a navbar class', () => {
-    shouldContainClass(<NavBar />, '.navbar');
+    shouldContainClass(wrapper, '.navbar');
   });
 
   it('Should conatain a branding class', () => {
-    shouldContainClass(<NavBar />, '.navbar__branding');
+    shouldContainClass(wrapper, '.navbar__branding');
   });
 
   it('Should contain a branding name class', () => {
-    shouldContainText(<NavBar />, '.navbar__branding__name', 'Authors\' Haven');
+    shouldContainText(wrapper, '.navbar__branding__name', 'Authors\' Haven');
   });
 
   it('Should contain a moto class', () => {
-    shouldContainText(<NavBar />, '.navbar__branding__moto', 'We provide blogging bliss and areading experience second to none');
+    shouldContainText(wrapper, '.navbar__branding__moto', 'We provide blogging bliss and areading experience second to none');
   });
 
   it('Should contain a navigation class', () => {
-    shouldContainClass(<NavBar />, '.navbar__navigation');
+    shouldContainClass(wrapper, '.navbar__navigation');
   });
 
   it('Should contain an auth class', () => {
-    shouldContainClass(<NavBar />, '.navbar__navigation__auth');
+    shouldContainClass(wrapper, '.navbar__navigation__auth');
   });
 
   it('Should contain an articles class', () => {
-    shouldContainClass(<NavBar />, '.navbar__navigation__articles');
+    shouldContainClass(wrapper, '.navbar__navigation__articles');
   });
 
   it('Should contain an articles ul class', () => {
-    shouldContainClass(<NavBar />, '.navbar__navigation__articles__ul');
+    shouldContainClass(wrapper, '.navbar__navigation__articles__ul');
   });
 });

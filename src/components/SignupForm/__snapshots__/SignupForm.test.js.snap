@@ -2,6 +2,7 @@
 
 exports[`SignupForm Component matches the snapshot 1`] = `
 <ModalBox
+  backdropId="signupModal"
   confirmPassword=""
   confirmPasswordError=""
   email=""

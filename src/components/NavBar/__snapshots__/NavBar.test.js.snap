@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar component should render without crushing 1`] = `
+<div
+  className="navbar"
+>
+  <div
+    className="navbar__branding"
+  >
+    <div
+      className="navbar__branding__name"
+    >
+      <h1>
+        Authors' Haven
+      </h1>
+    </div>
+    <div
+      className="navbar__branding__moto"
+    >
+      <p>
+        We provide blogging bliss and a
+      </p>
+      <p>
+        reading experience second to none
+      </p>
+    </div>
+  </div>
+  <div
+    className="navbar__navigation"
+  >
+    <div
+      className="navbar__navigation__auth"
+      id="userInfo"
+    >
+      <ul>
+        <li
+          className="navbar__navigation__auth__button"
+        >
+          <span
+            className="navbar__navigation__auth__button--link"
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+          >
+            |
+          </span>
+        </li>
+        <li
+          className="navbar__navigation__auth__button"
+        >
+          <span
+            className="navbar__navigation__auth__button--link"
+            onClick={[Function]}
+            role="button"
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+            tabIndex="0"
+          >
+             
+            Logout
+          </span>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="navbar__navigation__articles"
+    >
+      <ul
+        className="navbar__navigation__articles__ul"
+      >
+        <li
+          className="navbar__navigation__articles__ul__li"
+        >
+          <Link
+            className="navbar__navigation__articles__ul__li--button"
+            replace={false}
+            to="/"
+          >
+            Home
+          </Link>
+        </li>
+        <li
+          className="navbar__navigation__articles__ul__li"
+        >
+          <Link
+            className="navbar__navigation__articles__ul__li--button"
+            replace={false}
+            to="/articles"
+          >
+            Articles
+          </Link>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

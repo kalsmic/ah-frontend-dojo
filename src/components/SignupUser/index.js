@@ -170,6 +170,7 @@ export class SignupUser extends Component {
           signupMessageState={this.logSuccessSignup(signupSuccess)}
           closeModal={this.closeModelHandler}
           isSigningUp={isSigningUp}
+          backdropId="signupModal"
         />
       </div>
     );

@@ -19,23 +19,26 @@ import { closeOpenModalFunction } from 'constants/staticsMethods';
  */
 const ModalBox = (props) => {
   const {
-    children, show, title,
+    children, show, title, backdropId
   } = props;
 
   if (!show) {
     return null;
   }
   return (
-    <div className="backdrop" id="backdrop">
+    <div className="backdrop" id={backdropId}>
       <div className="modal">
         <header className="modal__header">
           <h4 className="modal__header__title">{title}</h4>
           <button
             className="modal__header__btn"
-            onClick={closeOpenModalFunction}
+            onClick={function (e) {
+              e.preventDefault();
+              closeOpenModalFunction(backdropId);
+            }}
             type="button"
           >
-            <i className="fas fa-times">&times;</i>
+            <i>&times;</i>
           </button>
         </header>
         <div className="modal__section">
@@ -51,6 +54,7 @@ const ModalBox = (props) => {
 
 ModalBox.propTypes = {
   title: PropTypes.string.isRequired,
+  backdropId: PropTypes.string.isRequired,
   show: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
 };

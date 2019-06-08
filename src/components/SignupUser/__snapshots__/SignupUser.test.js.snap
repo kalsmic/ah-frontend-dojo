@@ -3,6 +3,7 @@
 exports[`SignupUser Component matches the snapshot 1`] = `
 <div>
   <SignupForm
+    backdropId="signupModal"
     confirmPassword=""
     confirmPasswordError=""
     email=""

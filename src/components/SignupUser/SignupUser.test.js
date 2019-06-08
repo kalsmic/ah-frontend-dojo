@@ -18,6 +18,7 @@ const props = {
   email: '',
   username: '',
   password: '',
+  backdropId: 'signupModal',
 };
 
 /**
