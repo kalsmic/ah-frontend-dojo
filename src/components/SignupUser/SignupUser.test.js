@@ -18,6 +18,8 @@ const props = {
   email: '',
   username: '',
   password: '',
+  backdropId: 'signupModal',
+  closeModal: jest.fn(),
 };
 
 /**

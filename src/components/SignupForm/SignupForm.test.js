@@ -12,7 +12,7 @@ import SignupForm from 'components/SignupForm';
  */
 describe('SignupForm Component', () => {
   it('matches the snapshot', () => {
-    const component = shallow(<SignupForm />);
+    const component = shallow(<SignupForm backdropId="signupModal" closeModal={jest.fn()} />);
     expect(component).toMatchSnapshot();
   });
 });

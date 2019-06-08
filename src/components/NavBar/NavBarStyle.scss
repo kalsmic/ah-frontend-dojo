@@ -38,7 +38,7 @@
       margin-right: 1rem;
       margin-top: rem(-10px);
       background-color: $primary-ultra-light;
-      width: rem(115px);
+      width: fit-content;
       padding: rem(10px);
       box-shadow: rem(0px) rem(1px) rem(3px) $primary;
       border-bottom-right-radius: rem(20px);
@@ -88,7 +88,7 @@
           &--button:hover {
             background-color: $primary;
             color: $white;
-          } 
+          }
         }
       }
     }

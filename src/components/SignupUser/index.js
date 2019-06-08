@@ -29,6 +29,7 @@ export class SignupUser extends Component {
       }),
     }),
     isSigningUp: PropTypes.bool,
+    closeModal: PropTypes.func.isRequired,
   };
 
   /**
@@ -151,7 +152,7 @@ export class SignupUser extends Component {
       email, username, password, confirmPassword,
     } = this.state;
     const {
-      signupError, signupSuccess, isSigningUp,
+      signupError, signupSuccess, isSigningUp, closeModal,
     } = this.props;
 
     return (
@@ -168,8 +169,9 @@ export class SignupUser extends Component {
           passwordError={this.convertToString(signupError.password)}
           confirmPasswordError={this.checkForSamePassword(password, confirmPassword)}
           signupMessageState={this.logSuccessSignup(signupSuccess)}
-          closeModal={this.closeModelHandler}
+          closeModal={closeModal}
           isSigningUp={isSigningUp}
+          backdropId="signupModal"
         />
       </div>
     );

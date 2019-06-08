@@ -1,9 +1,177 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login Component matches the snapshot 1`] = `
-<div>
-  <h1>
-    Authors' Haven dummy login page
-  </h1>
-</div>
+exports[`login component matches the snapshot 1`] = `
+<ModalBox
+  backdropId="loginModal"
+  closeModal={[MockFunction]}
+  show={true}
+  title="LOGIN"
+>
+  <div
+    className="login"
+  >
+    <form
+      name="form"
+      onSubmit={[Function]}
+    >
+      <div
+        className="login__input-group "
+      >
+        <InputBox
+          handleChange={[Function]}
+          inputClass="login__input-control"
+          inputType="email"
+          name="email"
+          placeholder="Email"
+          required={true}
+          value=""
+        />
+      </div>
+      <div
+        className="login_input-group"
+      >
+        <InputBox
+          handleChange={[Function]}
+          inputClass="login__input-control"
+          inputType="password"
+          name="password"
+          placeholder="Password"
+          required={true}
+          value=""
+        />
+      </div>
+      <div
+        className="input-group"
+      >
+        <Button
+          btnClass="login__button"
+          btnEvent={[Function]}
+          btnName="Login"
+        />
+        <i
+          className="login__forgot__pwd"
+        >
+           
+          <Link
+            id="forgot"
+            replace={false}
+            to="/log"
+          >
+            Forgot Password 
+          </Link>
+           
+          or signin with
+        </i>
+      </div>
+      <div
+        className="login__social"
+      >
+        <a
+          className="button--social-login button--facebook"
+          href="fb"
+        >
+          <i
+            className="icon fa fa-facebook"
+          />
+        </a>
+        <a
+          className="button--social-login button--linkedin"
+          href="#google"
+        >
+          <i
+            className="icon fa fa-google"
+          />
+        </a>
+      </div>
+    </form>
+  </div>
+</ModalBox>
+`;
+
+exports[`login component should render without crsshing 1`] = `
+<ModalBox
+  backdropId="loginModal"
+  closeModal={[MockFunction]}
+  show={true}
+  title="LOGIN"
+>
+  <div
+    className="login"
+  >
+    <form
+      name="form"
+      onSubmit={[Function]}
+    >
+      <div
+        className="login__input-group "
+      >
+        <InputBox
+          handleChange={[Function]}
+          inputClass="login__input-control"
+          inputType="email"
+          name="email"
+          placeholder="Email"
+          required={true}
+          value=""
+        />
+      </div>
+      <div
+        className="login_input-group"
+      >
+        <InputBox
+          handleChange={[Function]}
+          inputClass="login__input-control"
+          inputType="password"
+          name="password"
+          placeholder="Password"
+          required={true}
+          value=""
+        />
+      </div>
+      <div
+        className="input-group"
+      >
+        <Button
+          btnClass="login__button"
+          btnEvent={[Function]}
+          btnName="Login"
+        />
+        <i
+          className="login__forgot__pwd"
+        >
+           
+          <Link
+            id="forgot"
+            replace={false}
+            to="/log"
+          >
+            Forgot Password 
+          </Link>
+           
+          or signin with
+        </i>
+      </div>
+      <div
+        className="login__social"
+      >
+        <a
+          className="button--social-login button--facebook"
+          href="fb"
+        >
+          <i
+            className="icon fa fa-facebook"
+          />
+        </a>
+        <a
+          className="button--social-login button--linkedin"
+          href="#google"
+        >
+          <i
+            className="icon fa fa-google"
+          />
+        </a>
+      </div>
+    </form>
+  </div>
+</ModalBox>
 `;

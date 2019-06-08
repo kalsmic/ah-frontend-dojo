@@ -2,45 +2,65 @@
 import React, { Component } from 'react';
 
 // third party libraries
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 // styles
 import './NavBarStyle.scss';
-// import { SignupUser } from '../../pages/SignupUser';
-import SignupUserPage from 'components/SignupUser';
-import { closeOpenModalFunction } from 'constants/staticsMethods';
 
-class Navbar extends Component {
+
+import SignupUserPage from 'components/SignupUser';
+import Login from 'components/Login';
+import { logoutUser } from 'store/actions/loginActions';
+
+export class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      openmodal: false,
+      signupModal: false,
+      loginModal: false,
     };
-    this.openModalHandler = this.openModalHandler.bind(this);
   }
 
-  openModalHandler = () => {
-    this.setState({ openmodal: true });
-    const openModalLink = document.getElementById('span-signup-link');
-    openModalLink.addEventListener('click', closeOpenModalFunction);
-  }
+  logout = (e) => {
+    e.preventDefault();
+    const { logout } = this.props;
+
+    logout();
+  };
+
+
+  openModalHandler = (modalId) => {
+    this.setState(prevState => (
+      { [modalId]: !prevState[modalId] }
+    ));
+  };
 
   render() {
-    const { openmodal } = this.state;
+    const { signupModal, loginModal } = this.state;
+    const { user } = this.props;
+
+
     return (
       <div className="navbar">
         {
-          openmodal && (
-            <Route
-              render={
-                props => (
-                  <SignupUserPage
-                    {...props}
-                  />
-                )
-              }
+          signupModal && (
+            <SignupUserPage
+              closeModal={() => this.openModalHandler('signupModal')}
             />
           )
         }
+        {
+          loginModal && (
+            <Login
+              closeModal={() => this.openModalHandler('loginModal')}
+            />
+
+          )
+        }
+
+
         <div className="navbar__branding">
           <div className="navbar__branding__name">
             <h1>
@@ -57,19 +77,76 @@ class Navbar extends Component {
           </div>
         </div>
         <div className="navbar__navigation">
-          <div className="navbar__navigation__auth">
+          <div className="navbar__navigation__auth" id="userInfo">
+
+            {user && (
+            <ul>
+
+              <li className="navbar__navigation__auth__button">
+                <span
+                  className="navbar__navigation__auth__button--link"
+                  style={{ cursor: 'pointer' }}
+                >
+                  { user.username }
+                </span>
+              </li>
+
+              <li className="navbar__navigation__auth__button">
+                <span
+                  className="navbar__navigation__auth__button--link"
+                  style={{ cursor: 'pointer' }}
+                  onClick={this.logout}
+                  role="button"
+                  tabIndex="0"
+                  id="logout"
+                  onKeyPress={this.handleKeyPress}
+                >
+                  {' '}
+                      Logout
+                </span>
+              </li>
+
+            </ul>
+
+            )
+              }
+
+            {!user && (
+
             <ul>
               <li className="navbar__navigation__auth__button">
-                <Link className="navbar__navigation__auth__button--link" to="/login">
+                <span
+                  id="loginModal"
+                  href="/"
+                  className="navbar__navigation__auth__button--link"
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => (this.openModalHandler('loginModal'))}
+                  role="button"
+                  tabIndex="0"
+                  onKeyPress={this.handleKeyPress}
+                >
                   Login
-                </Link>
+                </span>
               </li>
+
+              {' '}
               <li className="navbar__navigation__auth__button">
-                <span id="span-signup-link" href="/" className="navbar__navigation__auth__button--link" style={{ cursor: 'pointer' }} onClick={this.openModalHandler} role="button" tabIndex="0" onKeyPress={this.handleKeyPress}>
-                  Sign Up
+                <span
+                  id="signupModal"
+                  href="/"
+                  className="navbar__navigation__auth__button--link"
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => (this.openModalHandler('signupModal'))}
+                  role="button"
+                  tabIndex="0"
+                  onKeyPress={this.handleKeyPress}
+                >
+Sign Up
                 </span>
               </li>
             </ul>
+            )}
+
           </div>
           <div className="navbar__navigation__articles">
             <ul className="navbar__navigation__articles__ul">
@@ -91,4 +168,26 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+Navbar.defaultProps = {
+  user: {},
+};
+
+Navbar.propTypes = {
+  logout: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    username: PropTypes.string,
+    email: PropTypes.string,
+    token: PropTypes.string,
+  })
+};
+
+export const mapStateToProps = (state) => {
+  const { user } = state.loginReducer;
+  return { user };
+};
+
+export const mapDispatchToProps = dispatch => ({
+  logout() { (dispatch(logoutUser())); }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

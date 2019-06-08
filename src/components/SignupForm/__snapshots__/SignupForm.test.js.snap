@@ -2,6 +2,8 @@
 
 exports[`SignupForm Component matches the snapshot 1`] = `
 <ModalBox
+  backdropId="signupModal"
+  closeModal={[MockFunction]}
   confirmPassword=""
   confirmPasswordError=""
   email=""

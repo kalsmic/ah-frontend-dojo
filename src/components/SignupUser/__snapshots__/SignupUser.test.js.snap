@@ -3,6 +3,8 @@
 exports[`SignupUser Component matches the snapshot 1`] = `
 <div>
   <SignupForm
+    backdropId="signupModal"
+    closeModal={[MockFunction]}
     confirmPassword=""
     confirmPasswordError=""
     email=""

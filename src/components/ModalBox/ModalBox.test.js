@@ -14,6 +14,9 @@ const props = {
   title: 'signup',
   show: false,
   children: <div />,
+  backdropId: 'signupModal',
+  closeModal: jest.fn(),
+
 };
 
 /**

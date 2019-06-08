@@ -61,3 +61,12 @@ export const shouldContainClass = (component, className) => {
 export const shouldContainText = (component, className, text) => {
   expect(renderComponent(component).find(className).text()).toBe(text);
 };
+/**
+*Checks if user session is set
+* @param none
+* @return {object} {username,email,token} if sessionStorage is set else return null
+*/
+export const isAuthenticated = () => (
+  JSON.parse(sessionStorage.getItem('ahUser', '{}'))
+
+);
