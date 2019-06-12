@@ -7,4 +7,4 @@ eslint:
 stylelint:
   enabled: true
   config_file: .stylelintrc
-  version: 10.0.1
+  version: 9.10.1
