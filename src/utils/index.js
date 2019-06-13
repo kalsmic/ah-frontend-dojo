@@ -1,4 +1,5 @@
 import { shallow } from 'enzyme';
+import jwt_decode from 'jwt-decode';
 
 export const baseURL = 'https://ah-backend-dojo-dev.herokuapp.com/api';
 
@@ -64,9 +65,27 @@ export const shouldContainText = (component, className, text) => {
 /**
 *Checks if user session is set
 * @param none
-* @return {object} {username,email,token} if sessionStorage is set else return null
+* @return {object} {username,email,token} if sessionStorage is set
+ * else return user object with empty values
 */
-export const isAuthenticated = () => (
-  JSON.parse(sessionStorage.getItem('ahUser', '{}'))
+export const isAuthenticated = () => {
+  try {
+    const token = sessionStorage.getItem('ahToken');
 
-);
+    const UserInfo = jwt_decode(token);
+
+    return {
+      username: UserInfo.username,
+      email: UserInfo.email,
+      token,
+    };
+  } catch
+  (error) {
+    // invalid token format
+    return {
+      username: '',
+      email: '',
+      token: ''
+    };
+  }
+};

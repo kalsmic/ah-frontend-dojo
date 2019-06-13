@@ -23,6 +23,11 @@ $white: #FFFFFF;
     &:focus {
       outline: transparent;
     }
+
+    > form {
+      background: #EBEBEB;
+      padding: 15px;
+    }
   }
 
   &__error {
@@ -85,11 +90,6 @@ $white: #FFFFFF;
   padding: 14px;
   font-weight: normal;
   margin: 0;
-}
-
-form {
-  background: #EBEBEB;
-  padding: 15px;
 }
 
 .fa {

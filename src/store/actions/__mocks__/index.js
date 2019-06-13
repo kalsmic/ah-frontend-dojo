@@ -23,9 +23,9 @@ const data = {
   login: {
     success: {
       user: {
-        username: 'arthur',
-        email: 'admin@email.com',
-        token: 'ghjkjbhvgcftuyjiu736e7giwsnbxusijs',
+        username: 'dojo',
+        email: 'ahbackenddojo@gmail.com',
+        token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOjEsInVzZXJuYW1lIjoiZG9qbyIsImVtYWlsIjoiYWhiYWNrZW5kZG9qb0BnbWFpbC5jb20iLCJpYXQiOjE1MTYyMzkwMjJ9.yTCWAyuTKtmMtT8_lNxxaMYXelWKSuasMgCv4DyNbKE',
       },
     },
     failure: {

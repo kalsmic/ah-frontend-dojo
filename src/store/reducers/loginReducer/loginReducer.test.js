@@ -9,12 +9,13 @@ import {
 } from 'store/actions/loginTypes';
 
 describe('loginReducer state', () => {
+  const defaultUser = { email: '', token: '', username: '', };
   it('should return the initial state', () => {
     expect(loginReducer(undefined, {})).toEqual(
       {
         isLoggingIn: false,
         error: '',
-        user: null,
+        user: defaultUser,
 
       },
     );
@@ -86,6 +87,6 @@ describe('loginReducer state', () => {
 
         },
       ),
-    ).toEqual({ user: null, isLoggingIn: false });
+    ).toEqual({ user: defaultUser, isLoggingIn: false });
   });
 });

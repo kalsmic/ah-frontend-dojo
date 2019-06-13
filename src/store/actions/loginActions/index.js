@@ -10,8 +10,7 @@ import {
 } from 'store/actions/loginTypes';
 
 // base url for api
-import { baseURL } from 'utils';
-
+import { baseURL, isAuthenticated } from 'utils';
 
 // action for activating an isLoading image
 const loginRequest = isLoading => ({
@@ -37,7 +36,6 @@ const logout = () => ({
   type: LOGOUT,
 });
 
-
 /**
  * This function makes authentication calls to the login endpoint
  * @param {string} email of the user
@@ -45,11 +43,9 @@ const logout = () => ({
  * @returns {object}   user object containing username, email and token on success
  * @returns {string} error when wrong user credentials are provided
  */
-
 const loginUser = (email, password) => (dispatch) => {
   // Set request status to loading
   dispatch(loginRequest(true));
-
 
   const config = {
     headers: { 'Content-Type': 'application/json' },
@@ -61,21 +57,17 @@ const loginUser = (email, password) => (dispatch) => {
     .then((user) => {
       const userData = user.data.user;
       // store authenticated user details
-      sessionStorage.setItem('ahUser', JSON.stringify(userData));
-
-
-      dispatch(loginSuccess(userData));
+      sessionStorage.setItem('ahToken', userData.token);
+      dispatch(loginSuccess(isAuthenticated()));
     }).catch((error) => {
       dispatch(loginFailure(error.response.data.errors.error[0]));
     });
 };
 
-
 export const logoutUser = () => (dispatch) => {
   // Clear user credentials from session
-  sessionStorage.removeItem('ahUser');
+  sessionStorage.removeItem('ahToken');
   return dispatch(logout());
 };
-
 
 export default loginUser;

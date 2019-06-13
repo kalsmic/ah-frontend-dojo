@@ -40,18 +40,14 @@ describe('actions', () => {
         isLoading: true,
       },
       {
-        user: {
-          username: 'arthur',
-          email: 'admin@email.com',
-          token: 'ghjkjbhvgcftuyjiu736e7giwsnbxusijs',
-        },
+        user: data.login.success.user,
         type: LOGIN_SUCCESS,
         isLoading: false,
 
       },
     ];
 
-    return store.dispatch(loginUser('admin@email.com', 'Pa$$word123'))
+    return store.dispatch(loginUser('"ahbackenddojo@gmail.com"', 'Pa$$word123'))
       .then(() => {
         expect(store.getActions()).toEqual(expectedActions);
       });
