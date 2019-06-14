@@ -41,7 +41,6 @@ export class Navbar extends Component {
     const { signupModal, loginModal } = this.state;
     const { user } = this.props;
 
-
     return (
       <div className="navbar">
         {
@@ -79,7 +78,7 @@ export class Navbar extends Component {
         <div className="navbar__navigation">
           <div className="navbar__navigation__auth" id="userInfo">
 
-            {user && (
+            {user.token && (
             <ul>
 
               <li className="navbar__navigation__auth__button">
@@ -111,7 +110,7 @@ export class Navbar extends Component {
             )
               }
 
-            {!user && (
+            {!user.token && (
 
             <ul>
               <li className="navbar__navigation__auth__button">

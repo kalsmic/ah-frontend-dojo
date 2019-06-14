@@ -15,19 +15,20 @@ describe('Format date before october', () => {
 
 describe('isAuthenticated user function test', () => {
   it('should return logged in user info if session is set', () => {
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOjEsInVzZXJuYW1lIjoiZG9qbyIsImVtYWlsIjoiYWhiYWNrZW5kZG9qb0BnbWFpbC5jb20iLCJpYXQiOjE1MTYyMzkwMjJ9.yTCWAyuTKtmMtT8_lNxxaMYXelWKSuasMgCv4DyNbKE';
+    sessionStorage.setItem('ahToken', token);
     const user = {
       username: 'dojo',
       email: 'ahbackenddojo@gmail.com',
-      token: 'x.y.z',
+      token,
     };
-    sessionStorage.setItem('ahUser', JSON.stringify(user));
 
     expect(isAuthenticated()).toEqual(user);
   });
 
   it('should return an empty object if no user info in session storage', () => {
-    sessionStorage.removeItem('ahUser');
+    sessionStorage.removeItem('ahToken');
 
-    expect(isAuthenticated()).toEqual(null);
+    expect(isAuthenticated()).toEqual({ email: '', token: '', username: '' });
   });
 });

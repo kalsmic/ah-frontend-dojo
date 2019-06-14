@@ -40,7 +40,11 @@ const loginReducer = (state = initialLoginState, action) => {
     case LOGOUT:
       return {
         ...state,
-        user: null,
+        user: {
+          username: '',
+          email: '',
+          token: '',
+        },
 
       };
 

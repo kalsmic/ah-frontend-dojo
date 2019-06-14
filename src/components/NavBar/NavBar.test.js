@@ -4,7 +4,10 @@ import { shallow } from 'enzyme';
 
 // components
 import { shouldContainClass, shouldContainText } from 'utils';
+import data from 'store/actions/__mocks__';
 import { Navbar, mapStateToProps, mapDispatchToProps } from './index';
+
+// test data
 
 describe('NavBar component', () => {
   const logoutFn = jest.fn();
@@ -12,7 +15,11 @@ describe('NavBar component', () => {
   const props = {
     signupModal: false,
     loginModal: false,
-    user: null,
+    user: {
+      username: '',
+      email: '',
+      token: '',
+    },
     logout: logoutFn,
   };
 
@@ -72,7 +79,7 @@ describe('NavBar component', () => {
         user: {
           username: 'dojo',
           email: 'email@email.com',
-          token: 'pay.load.sign',
+          token: data.login.success.user.token,
         },
       }
     };
