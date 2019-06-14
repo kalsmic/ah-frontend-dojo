@@ -125,4 +125,36 @@ describe('NavBar component', () => {
 
     expect(navBar.state().signupModal).toBe(true);
   });
+
+  it('should show user info and logout button when user is logged in', () => {
+    // Open login modal
+    navBar.setProps({
+      user: {
+        username: 'arthur',
+        token: 'x.y.z',
+        email: 'admin@admin.com'
+      }
+    });
+
+    const userInfo = navBar.find('#userInfo').find('ul').children();
+
+    expect(userInfo.at(0).text()).toBe('arthur');
+    expect(userInfo.at(1).text()).toBe(' Logout');
+  });
+
+  it('should show user info and logout button when user is logged in', () => {
+    // Open login modal
+    navBar.setProps({
+      user: {
+        username: 'arthur',
+        token: 'x.y.z',
+        email: 'admin@admin.com'
+      }
+    });
+
+    const userInfo = navBar.find('#userInfo').find('ul').children();
+
+    expect(userInfo.at(0).text()).toBe('arthur');
+    expect(userInfo.at(1).text()).toBe(' Logout');
+  });
 });

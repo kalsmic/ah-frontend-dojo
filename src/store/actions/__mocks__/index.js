@@ -49,7 +49,42 @@ const data = {
         ]
       }
     }
-  }
+  },
+  addComment: {
+    success: {
+      comment: {
+        created_at: '2019-06-14T05:58:57.206787Z',
+        updated_at: '2019-06-14T05:58:57.206825Z',
+        author: {
+          firstname: '',
+          lastname: '',
+          username: 'adojo',
+          bio: '',
+          image: '',
+          email: 'user@ahhaven.com'
+        },
+        body: 'my third comment',
+        id: 1
+      }
+
+    },
+    failure: {
+      errors: {
+        body: [
+          'This field may not be blank.',
+        ]
+      }
+    }
+  },
+  deleteComment: {
+    success: {
+      message: 'Comment deleted Successfully'
+    },
+    failure: { detail: 'Not found.' },
+  },
+  getComments: {
+    failure: { detail: 'Not found.' },
+  },
 };
 
 export default data;

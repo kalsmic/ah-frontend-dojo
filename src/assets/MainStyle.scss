@@ -16,3 +16,18 @@ $shadow: #D3D6DB;
   padding: 0;
 
 }
+
+.btn {
+  background: $white;
+  padding: 0.2rem 0.5rem;
+  border: 0.06rem $primary solid;
+  border-radius: 50rem;
+  color: $primary;
+  cursor: pointer;
+
+  &:hover {
+    background: $primary;
+    color: $white;
+    outline: none;
+  }
+}

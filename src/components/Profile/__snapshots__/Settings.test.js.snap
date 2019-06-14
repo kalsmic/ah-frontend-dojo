@@ -69,6 +69,7 @@ exports[`Setting Component should match the snapshot 1`] = `
           btnClass="edit-btn"
           btnEvent={[Function]}
           btnName="Edit Profile"
+          disabled={false}
           id="editProfile__button"
           type="submit"
         />

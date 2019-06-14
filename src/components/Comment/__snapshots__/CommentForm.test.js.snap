@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment component should render without crashing 1`] = `
+<div
+  className="comment_form"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <textarea
+        name="commentBody"
+        onChange={[Function]}
+        placeholder="Comment"
+        required={true}
+        rows="3"
+        value=""
+      />
+    </div>
+    <div>
+      <Button
+        btnClass="btn"
+        btnEvent={[Function]}
+        btnName="Post Comment"
+        disabled={false}
+        inputType="submit"
+      />
+    </div>
+  </form>
+</div>
+`;

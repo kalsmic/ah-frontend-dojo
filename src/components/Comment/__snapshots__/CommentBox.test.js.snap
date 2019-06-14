@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment Box should render without crushing 1`] = `
+<div
+  className="comment"
+>
+  <img
+    alt="author"
+    className="comment__img"
+  />
+  <div
+    className="comment__header"
+  >
+    <p
+      className="comment__header__author"
+    >
+      arthur
+    </p>
+    <span
+      className="comment__header__timestamp"
+    >
+      Sat Jun 15 2019 09:02:00 
+    </span>
+  </div>
+  <div
+    className="comment__body"
+  >
+    my first comment
+  </div>
+  <div
+    className="comment_footer"
+  >
+     
+  </div>
+  <div
+    className="comment__footer"
+  >
+    <DeleteComment
+      articleSlug="my_article_slug"
+      authenticatedUsername="arthur"
+      author="arthur"
+      commentId={1}
+      deleteComment={[MockFunction]}
+    />
+  </div>
+</div>
+`;

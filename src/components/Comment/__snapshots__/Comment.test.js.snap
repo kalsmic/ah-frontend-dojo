@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment Box should render without crushing 1`] = `
+<div
+  className="commentForm"
+>
+  <span
+    className="comment_section_stats"
+  >
+    2
+     
+    comments
+  </span>
+  <Connect(CommentForm)
+    articleSlug="javascript-code"
+  />
+  <div
+    className="comments_list"
+  >
+     
+    <CommentBox
+      articleSlug="javascript-code"
+      authenticatedUsername="zack"
+      author={
+        Object {
+          "bio": "This is arthur biodata information",
+          "email": "email2@ahhaven.com",
+          "firstname": "Firstnamex",
+          "image": "https://firebasestorage.googleapis.com/v0/b/ah-frontend-dojo.appspot.com/o/images%2F61030656_367914100741361_8198565189029724160_n.jpg?alt=media&token=a2c313ca-3c98-44f6-b89e-bba30409c49f",
+          "lastname": "Lastnamex",
+          "username": "adojo",
+        }
+      }
+      body="my second comment"
+      commentId={2}
+      created_at="2019-06-14T07:43:08.288832Z"
+      deleteComment={[MockFunction]}
+      end_index={null}
+      highlighted_text={null}
+      id={2}
+      key="2"
+      start_index={null}
+      updated_at="2019-06-14T07:43:08.288889Z"
+    />
+    <CommentBox
+      articleSlug="javascript-code"
+      authenticatedUsername="zack"
+      author={
+        Object {
+          "bio": "This is arthur biodata information",
+          "email": "email1@ahhaven.com",
+          "firstname": "Firstname",
+          "image": "https://firebasestorage.googleapis.com/v0/b/ah-frontend-dojo.appspot.com/o/images%2F61030656_367914100741361_8198565189029724160_n.jpg?alt=media&token=a2c313ca-3c98-44f6-b89e-bba30409c49f",
+          "lastname": "Lastname",
+          "username": "adojo",
+        }
+      }
+      body="my first comment"
+      commentId={1}
+      created_at="2019-06-14T05:58:57.206787Z"
+      deleteComment={[MockFunction]}
+      end_index={null}
+      highlighted_text={null}
+      id={1}
+      key="1"
+      start_index={null}
+      updated_at="2019-06-14T05:58:57.206825Z"
+    />
+  </div>
+</div>
+`;

@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import { shallow, mount } from 'enzyme';
 import store from 'store/store';
 import { LandingPage } from 'pages/Landing';
-import PageNotFound from 'pages/Error';
 import { MemoryRouter } from 'react-router';
 import App from './App';
 

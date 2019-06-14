@@ -1,0 +1,106 @@
+@import 'assets/MainStyle.scss';
+
+.comment_form {
+  > form {
+    width: 100%;
+    //padding: none;
+    background: none;
+
+    & textarea {
+      outline: none;
+      width: 100%;
+      border: 0.06rem #2D658623 solid;
+      background: $white;
+      border-radius: 0.7rem;
+      padding: 0.5rem;
+      height: 4rem;
+
+      &:hover, &:focus {
+        border: 0.06rem #2D658656 solid;
+      }
+    }
+
+    & i {
+      color: #C21F39;
+    }
+  }
+}
+
+.comment {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1.2rem;
+  //box-shadow: 0 0 0 0.1rem rgba(34, 34, 34, 0.06);
+  border-radius: 5%;
+  padding: 0.2rem;
+  margin-bottom: 0.8rem;
+
+  &__img {
+    grid-column: 1/ span 1;
+    grid-row: 1;
+    justify-self: end;
+    top: 50%;
+    width: 4.375rem;
+    box-shadow: 0 0 0.4rem rgba(0,0,0,.6);
+    border-radius: 50%;
+  }
+
+  &__header {
+    grid-column: 2 /span 3;
+    grid-row: 1;
+    display: inline-grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    border-bottom: 1px solid #E5E5E5;
+
+    &__author {
+      grid-column: span 1;
+      grid-row: 1;
+      color: $primary;
+      transition: color .3s ease-in-out;
+      justify-self: start;
+
+      &:hover {
+        color: #222;
+        text-decoration: underline;
+      }
+
+    }
+
+    &__timestamp {
+      grid-column: 2/span 2;
+      grid-row: 1;
+      color: #AEADAD;
+      justify-self: end;
+    }
+
+  }
+
+  &__body {
+    grid-column: 2/span 3;
+    grid-row: 2;
+    display: block;
+    color: rgba(34, 34, 34, 0.64);
+  }
+
+  &__footer {
+    grid-column: 2/span 3;
+    grid-row: 3;
+    padding-bottom: 0.8rem;
+
+    > .delete {
+      color: #FF492E;
+      border: none;
+
+      &:hover {
+        border: none;
+        background-color: transparent;
+      }
+
+    }
+
+    &__actions {
+      justify-self: end;
+    }
+  }
+}
