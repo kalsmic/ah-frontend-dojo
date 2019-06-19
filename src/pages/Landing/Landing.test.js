@@ -40,4 +40,19 @@ describe('Article Column', () => {
     const component = shallow(<ArticleColumn columnTitle="Most Recent" articles={[mockArticle()]} />);
     expect(component.exists()).toBe(true);
   });
+
+  it('should call the get articles  function', () => {
+    const getArticlesFn = jest.fn();
+    const props = {
+      next: 'nexturl',
+      previous: 'previousurl',
+      count: 10,
+      articles: [],
+      getArticles: getArticlesFn,
+
+    };
+    const wrapper = shallow(<LandingPage {...props} />);
+    wrapper.instance().paginate();
+    expect(getArticlesFn).toBeCalled();
+  });
 });

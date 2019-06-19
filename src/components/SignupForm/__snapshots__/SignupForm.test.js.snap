@@ -100,6 +100,7 @@ exports[`SignupForm Component matches the snapshot 1`] = `
         btnClass="signupForm__button"
         btnEvent={[Function]}
         btnName="Sign up"
+        disabled={false}
         id="signupForm__button"
       />
     </form>

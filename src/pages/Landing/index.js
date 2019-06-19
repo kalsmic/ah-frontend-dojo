@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 
 // third-party libraries
 import { ToastContainer } from 'react-toastify';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -15,10 +14,18 @@ import Navbar from 'components/NavBar';
 import Footer from 'components/Footer';
 import Loader from 'components/Loader';
 import { getAllArticles } from 'store/actions/articleActions';
+import ArticlePagination from 'components/ArticlePagination';
 import ArticleColumn from './ArticleColumn';
 
 
 export class LandingPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 1,
+    };
+  }
+
   componentDidMount() {
     const { getArticles } = this.props;
 
@@ -26,8 +33,25 @@ export class LandingPage extends Component {
     getArticles();
   }
 
+
+  paginate = (apiCallUrl, Increment) => {
+    const { getArticles } = this.props;
+    const { page } = this.state;
+    this.setState({
+      page: page + Increment
+    });
+
+    getArticles(apiCallUrl);
+  };
+
+
   render() {
-    const { articles, isFetching } = this.props;
+    const {
+      articles, isFetching, previous, count, next
+    } = this.props;
+    const { page } = this.state;
+
+
     return (
 
       // Navbar
@@ -65,7 +89,18 @@ export class LandingPage extends Component {
             <ArticleColumn columnTitle="Most Popular" articles={articles} />
             <ArticleColumn columnTitle="Most Liked" articles={articles} />
             <ArticleColumn columnTitle="Most Recent" articles={articles} />
+
           </div>
+          <div>
+            <ArticlePagination
+              paginate={this.paginate}
+              next={next}
+              previous={previous}
+              count={count}
+              page={page}
+            />
+          </div>
+
           <Footer />
         </div>
       </div>
@@ -75,6 +110,9 @@ export class LandingPage extends Component {
 
 // proptype validation
 LandingPage.propTypes = {
+  next: PropTypes.string,
+  count: PropTypes.number,
+  previous: PropTypes.string,
   getArticles: PropTypes.func,
   isFetching: PropTypes.bool,
   articles: PropTypes.arrayOf(PropTypes.shape({
@@ -105,6 +143,9 @@ LandingPage.propTypes = {
 
 LandingPage.defaultProps = {
   articles: [],
+  next: null,
+  previous: null,
+  count: 0,
   isFetching: false,
   getArticles: () => { },
 };
@@ -115,15 +156,25 @@ LandingPage.defaultProps = {
  * @return {articles} - An aray of articles
  *
  */
-const mapStateToProps = state => state.articles;
+// const mapStateToProps = state => state.articles;
+const mapStateToProps = (state) => {
+  const {
+    next, count, previous, articles
+  } = state.articles;
+  return {
+    next, count, previous, articles
+  };
+};
+
 /**
  * This is a function to pass the state as a prop.
  * @param {dispatch}  - The dispatch function
  * @return {getArticles} - The thunk to fetch articles
  *
  */
-const mapDispatchToProps = dispatch => bindActionCreators({
-  getArticles: () => getAllArticles(),
-}, dispatch);
+
+const mapDispatchToProps = dispatch => ({
+  getArticles(apiCallUrl) { dispatch(getAllArticles(apiCallUrl)); },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);

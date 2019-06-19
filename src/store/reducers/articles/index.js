@@ -21,6 +21,9 @@ const articles = (state = initialState, action) => {
         {
           isFetching: false,
           articles: action.articles,
+          count: action.count,
+          next: action.next,
+          previous: action.previous,
         });
 
     case GET_ARTICLES_ERROR:

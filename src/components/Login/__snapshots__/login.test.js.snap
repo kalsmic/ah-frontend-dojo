@@ -47,6 +47,7 @@ exports[`login component matches the snapshot 1`] = `
           btnClass="login__button"
           btnEvent={[Function]}
           btnName="Login"
+          disabled={false}
         />
         <i
           className="login__forgot__pwd"
@@ -129,6 +130,7 @@ exports[`login component should render without crsshing 1`] = `
           btnClass="login__button"
           btnEvent={[Function]}
           btnName="Login"
+          disabled={false}
         />
         <i
           className="login__forgot__pwd"

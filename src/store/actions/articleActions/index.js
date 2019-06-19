@@ -15,7 +15,13 @@ export const getArticlesStart = () => ({ type: GET_ARTICLES_START });
  * @param {articles}
  * @return {action} - Action to add articles to the store
  */
-export const getArticles = articles => ({ articles, type: GET_ARTICLES });
+export const getArticles = articles => ({
+  articles: articles.results.articles,
+  count: articles.count,
+  next: articles.next,
+  previous: articles.previous,
+  type: GET_ARTICLES,
+});
 
 /**
  * Action creator to indicate article fetching start.
@@ -30,8 +36,12 @@ export const getArticalsError = error => ({ error, type: GET_ARTICLES_ERROR });
  * Thunk to fetch articles.
  * @return {action} - Action to indicate fetching start
  */
-export const getAllArticles = () => (dispatch) => {
-  const url = `${baseURL}${'/articles/'}`;
+export const getAllArticles = apiUrl => (dispatch) => {
+  let url = `${baseURL}${'/articles/'}`;
+
+  if (apiUrl) {
+    url = apiUrl;
+  }
 
   dispatch(getArticlesStart());
   return axios.get(url, {
@@ -39,7 +49,7 @@ export const getAllArticles = () => (dispatch) => {
       'Content-Type': 'application/json',
     },
   })
-    .then(({ data }) => dispatch(getArticles(data.results.articles)))
+    .then(({ data }) => dispatch(getArticles(data)))
     .catch(error => dispatch(getArticalsError(error)));
 };
 

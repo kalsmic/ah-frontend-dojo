@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticlePagination should render without crushing 1`] = `
+<ArticlePagination
+  count={20}
+  next="next"
+  paginate={[MockFunction]}
+  previous={null}
+>
+  <div
+    className="article-pagination"
+  >
+    <Button
+      btnClass="fa fa-backward"
+      btnEvent={[Function]}
+      btnName=""
+      disabled={true}
+    >
+      <button
+        className="fa fa-backward"
+        disabled={true}
+        onClick={[Function]}
+        type="button"
+      />
+    </Button>
+    <span>
+      1
+       
+      /
+       
+      2
+       
+      pages 
+    </span>
+    <Button
+      btnClass="fa fa-forward"
+      btnEvent={[Function]}
+      btnName=""
+      disabled={false}
+    >
+      <button
+        className="fa fa-forward"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      />
+    </Button>
+  </div>
+</ArticlePagination>
+`;
